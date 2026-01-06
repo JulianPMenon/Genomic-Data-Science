@@ -85,6 +85,7 @@ def validate(model, val_loader, criterion, device, logger):
             total_loss += loss.item()
             
             # Get predictions
+            # Apply softmax to convert logits to probabilities for metric calculation
             probs = torch.softmax(outputs, dim=1)
             _, preds = torch.max(outputs, 1)
             
