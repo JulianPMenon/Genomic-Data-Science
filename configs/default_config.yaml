@@ -1,0 +1,49 @@
+# Configuration file for training
+
+# Model parameters
+model:
+  name: "BaseModel"
+  input_dim: 100
+  hidden_dim: 256
+  output_dim: 2
+  dropout: 0.5
+
+# Training parameters
+training:
+  batch_size: 32
+  num_epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  optimizer: "adam"  # adam, sgd, adamw
+  scheduler: "reduce_on_plateau"  # reduce_on_plateau, cosine, step
+  early_stopping_patience: 10
+  gradient_clip: 1.0
+
+# Data parameters
+data:
+  data_path: null  # Set to your data path or null for dummy data
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  num_workers: 4
+  seed: 42
+
+# Logging and checkpointing
+logging:
+  log_dir: "logs"
+  checkpoint_dir: "models/checkpoints"
+  tensorboard: true
+  save_best_only: true
+  verbose: 1  # 0: silent, 1: progress bar, 2: one line per epoch
+
+# Device settings
+device:
+  use_cuda: true
+  gpu_id: 0
+  mixed_precision: false  # Use automatic mixed precision (AMP)
+
+# Experiment tracking
+experiment:
+  name: "baseline_experiment"
+  description: "Baseline model for genomic data classification"
+  tags: ["baseline", "classification"]
