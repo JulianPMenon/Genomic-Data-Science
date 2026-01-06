@@ -40,10 +40,11 @@ def get_dataloaders(
     # Set random seed for reproducibility
     torch.manual_seed(seed)
     
-    # Calculate split sizes
+    # Calculate split sizes ensuring all samples are allocated
     total_size = len(dataset)
     train_size = int(train_split * total_size)
     val_size = int(val_split * total_size)
+    # Ensure test_size accounts for any rounding to use all samples
     test_size = total_size - train_size - val_size
     
     # Split dataset

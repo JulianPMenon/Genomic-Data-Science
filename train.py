@@ -90,7 +90,12 @@ def validate(model, val_loader, criterion, device, logger):
             
             all_preds.extend(preds.cpu().numpy())
             all_labels.extend(labels.cpu().numpy())
-            all_probs.extend(probs[:, 1].cpu().numpy() if probs.shape[1] == 2 else probs.cpu().numpy())
+            # For binary classification, use probability of positive class
+            if probs.shape[1] == 2:
+                all_probs.extend(probs[:, 1].cpu().numpy())
+            else:
+                # For multi-class, store all probabilities
+                all_probs.extend(probs.cpu().numpy())
     
     avg_loss = total_loss / len(val_loader)
     metrics = calculate_metrics(all_labels, all_preds, all_probs)
@@ -151,25 +156,28 @@ def train(config_path):
     criterion = nn.CrossEntropyLoss()
     
     # Optimizer
-    if config['training']['optimizer'].lower() == 'adam':
+    optimizer_name = config['training']['optimizer'].lower()
+    if optimizer_name == 'adam':
         optimizer = optim.Adam(
             model.parameters(),
             lr=config['training']['learning_rate'],
             weight_decay=config['training']['weight_decay']
         )
-    elif config['training']['optimizer'].lower() == 'sgd':
+    elif optimizer_name == 'sgd':
         optimizer = optim.SGD(
             model.parameters(),
             lr=config['training']['learning_rate'],
             momentum=0.9,
             weight_decay=config['training']['weight_decay']
         )
-    else:
+    elif optimizer_name == 'adamw':
         optimizer = optim.AdamW(
             model.parameters(),
             lr=config['training']['learning_rate'],
             weight_decay=config['training']['weight_decay']
         )
+    else:
+        raise ValueError(f"Unknown optimizer: {optimizer_name}. Choose 'adam', 'sgd', or 'adamw'.")
     
     # Scheduler
     if config['training']['scheduler'] == 'reduce_on_plateau':

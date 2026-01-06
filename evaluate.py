@@ -3,6 +3,7 @@ Evaluation/Inference script for genomic ML models
 """
 
 import argparse
+import numpy as np
 import torch
 import torch.nn as nn
 from pathlib import Path
@@ -176,7 +177,6 @@ def main(args):
             output_path = Path(args.output)
             output_path.parent.mkdir(parents=True, exist_ok=True)
             
-            import numpy as np
             preds, labels, probs = predictions
             np.savez(
                 output_path,
@@ -197,7 +197,6 @@ def main(args):
             output_path = Path(args.output)
             output_path.parent.mkdir(parents=True, exist_ok=True)
             
-            import numpy as np
             np.savez(
                 output_path,
                 predictions=preds,
