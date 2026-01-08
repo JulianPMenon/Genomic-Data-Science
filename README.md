@@ -1,246 +1,203 @@
-# Genomic Data Science - ML Project Template
+# 🧬 Genomic Data Science Project
 
-A comprehensive PyTorch-based machine learning project template for genomic data science and bioinformatics applications. This template provides a complete structure with everything needed to start developing ML models for scientific purposes.
+A comprehensive toolkit for genomic data analysis, visualization, and machine learning applications in bioinformatics.
 
-## 🚀 Features
+## 📋 Table of Contents
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Modules](#modules)
+- [Scientific Use Cases](#scientific-use-cases)
+- [Learning Tasks](#learning-tasks)
+- [Dependencies](#dependencies)
+- [Contributing](#contributing)
+- [License](#license)
 
-- **Ready-to-use PyTorch setup** with modular architecture
-- **Data loading utilities** for genomic data
-- **Configurable training pipeline** with YAML config files
-- **Comprehensive logging** with TensorBoard support
-- **Model evaluation** and inference scripts
-- **Unit tests** with pytest
-- **Jupyter notebooks** for exploration
-- **Modern Python packaging** with setuptools
-- **Scientific computing stack** (NumPy, Pandas, SciPy, Biopython)
+## 🔬 Overview
+
+This project provides a robust framework for analyzing genomic data, with a focus on:
+- Gene expression analysis
+- Sequence processing and alignment
+- Statistical analysis and visualization
+- Machine learning applications in genomics
+- Integration with public genomic databases
+
+## ✨ Features
+
+- **Data Processing**: Tools for handling FASTA, FASTQ, VCF, and other genomic file formats
+- **Quality Control**: Comprehensive QC metrics and visualization
+- **Statistical Analysis**: Advanced statistical methods for genomic data
+- **Visualization**: Interactive plots and publication-ready figures
+- **Machine Learning**: Classification, regression, and clustering algorithms
+- **Pipeline Automation**: Streamlined workflows for common analyses
+
+## 🚀 Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- pip package manager
+- Git
+
+### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/JulianPMenon/Genomic-Data-Science.git
+cd Genomic-Data-Science
+```
+
+2. Create a virtual environment (recommended):
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+## 💻 Usage
+
+### Basic Example
+
+```python
+from genomic_toolkit import DataLoader, Analyzer
+
+# Load genomic data
+loader = DataLoader('data/sample.vcf')
+data = loader.parse()
+
+# Perform analysis
+analyzer = Analyzer(data)
+results = analyzer.run_qc()
+analyzer.visualize_results()
+```
+
+### Running Analysis Pipelines
+
+```bash
+python scripts/run_pipeline.py --input data/raw/ --output results/ --analysis all
+```
 
 ## 📁 Project Structure
 
 ```
 Genomic-Data-Science/
-├── configs/                    # Configuration files
-│   └── default_config.yaml
-├── data/                       # Data directory
-│   ├── raw/                    # Raw data files
-│   └── processed/              # Processed data files
-├── logs/                       # Training logs
-├── models/                     # Saved models
-│   └── checkpoints/            # Model checkpoints
-├── notebooks/                  # Jupyter notebooks
-│   └── exploratory_analysis.ipynb
-├── src/                        # Source code
-│   ├── data/                   # Data loading and preprocessing
-│   │   ├── __init__.py
-│   │   ├── dataset.py          # Dataset class
-│   │   └── dataloader.py       # DataLoader utilities
-│   ├── models/                 # Model architectures
-│   │   ├── __init__.py
-│   │   └── base_model.py       # Base model template
-│   └── utils/                  # Utility functions
-│       ├── __init__.py
-│       ├── config.py           # Configuration management
-│       ├── logger.py           # Logging utilities
-│       └── metrics.py          # Metrics calculation
-├── tests/                      # Unit tests
-│   ├── __init__.py
-│   ├── test_data.py
-│   ├── test_model.py
-│   └── test_utils.py
-├── train.py                    # Training script
-├── evaluate.py                 # Evaluation/inference script
-├── setup.py                    # Package setup
-├── requirements.txt            # Python dependencies
-├── environment.yml             # Conda environment
-├── .gitignore                  # Git ignore rules
-└── README.md                   # This file
+├── data/                  # Sample datasets and data storage
+├── notebooks/            # Jupyter notebooks for exploration
+├── scripts/              # Analysis scripts and pipelines
+├── src/                  # Source code modules
+│   ├── data_processing/
+│   ├── analysis/
+│   ├── visualization/
+│   └── ml_models/
+├── tests/                # Unit tests
+├── docs/                 # Documentation
+├── requirements.txt      # Python dependencies
+└── README.md            # This file
 ```
 
-## 🔧 Installation
+## 🧩 Modules
 
-### Option 1: Using pip
+### Data Processing
+- **Sequence Parser**: Handle FASTA/FASTQ files
+- **VCF Handler**: Process variant call format files
+- **Data Cleaner**: Quality filtering and normalization
 
-```bash
-# Clone the repository
-git clone https://github.com/JulianPMenon/Genomic-Data-Science.git
-cd Genomic-Data-Science
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Install package in development mode
-pip install -e .
-```
-
-### Option 2: Using conda
-
-```bash
-# Clone the repository
-git clone https://github.com/JulianPMenon/Genomic-Data-Science.git
-cd Genomic-Data-Science
-
-# Create conda environment
-conda env create -f environment.yml
-conda activate genomic-ml
-
-# Install package in development mode
-pip install -e .
-```
-
-## 🎯 Quick Start
-
-### 1. Training a Model
-
-```bash
-# Train with default configuration
-python train.py
-
-# Train with custom configuration
-python train.py --config configs/custom_config.yaml
-```
-
-### 2. Evaluating a Model
-
-```bash
-# Evaluate on test data
-python evaluate.py \
-    --checkpoint models/checkpoints/best_model.pth \
-    --data-path data/test.csv \
-    --mode evaluate
-
-# Run inference on new data
-python evaluate.py \
-    --checkpoint models/checkpoints/best_model.pth \
-    --data-path data/new_data.csv \
-    --mode inference \
-    --output predictions.npz
-```
-
-### 3. Using Jupyter Notebooks
-
-```bash
-# Start Jupyter
-jupyter notebook
-
-# Open notebooks/exploratory_analysis.ipynb
-```
-
-## 📊 Data Format
-
-The default dataset expects data in CSV format with features in columns and labels in the last column. You can customize the `GenomicDataset` class in `src/data/dataset.py` for different data formats.
-
-Example CSV structure:
-```
-feature1,feature2,feature3,...,featureN,label
-0.123,0.456,0.789,...,0.321,0
-0.234,0.567,0.890,...,0.432,1
-...
-```
-
-## ⚙️ Configuration
-
-Edit `configs/default_config.yaml` to customize:
-
-- **Model architecture** (input_dim, hidden_dim, output_dim, dropout)
-- **Training parameters** (batch_size, learning_rate, epochs, optimizer)
-- **Data splits** (train/val/test ratios)
-- **Logging settings** (TensorBoard, checkpoints)
-- **Device settings** (CPU/GPU, mixed precision)
-
-## 🧪 Running Tests
-
-```bash
-# Run all tests
-pytest tests/
-
-# Run specific test file
-pytest tests/test_model.py
-
-# Run with coverage
-pytest --cov=src tests/
-```
-
-## 📝 Customization Guide
-
-### Adding a New Model
-
-1. Create a new file in `src/models/` (e.g., `cnn_model.py`)
-2. Inherit from `nn.Module` and implement `forward()`
-3. Import it in `src/models/__init__.py`
-4. Update `train.py` to use your model
-
-### Custom Data Loading
-
-1. Modify `src/data/dataset.py` to handle your data format
-2. Update `_load_from_file()` method for custom parsing
-3. Adjust `__getitem__()` for data transformations
-
-### Adding New Metrics
-
-1. Add metric functions to `src/utils/metrics.py`
-2. Update `calculate_metrics()` to include new metrics
-3. Modify `print_metrics()` for display
-
-## 🔬 Scientific Use Cases
-
-This template is suitable for:
-
-- **Gene expression analysis** (RNA-seq, microarray)
-- **DNA/RNA sequence classification**
-- **Protein structure prediction**
-- **Disease classification** from genomic markers
-- **Drug response prediction**
-- **Variant effect prediction**
-- **Multi-omics data integration**
-
-## 📚 Dependencies
-
-### Core ML Libraries
-- PyTorch >= 2.0.0
-- NumPy >= 1.24.0
-- Pandas >= 2.0.0
-- scikit-learn >= 1.3.0
-
-### Scientific Computing
-- SciPy >= 1.10.0
-- Biopython >= 1.81
+### Analysis
+- **Differential Expression**: DESeq2-style analysis
+- **Variant Calling**: SNP and indel detection
+- **Pathway Analysis**: Gene set enrichment analysis
 
 ### Visualization
-- Matplotlib >= 3.7.0
-- Seaborn >= 0.12.0
-- Plotly >= 5.14.0
+- **Expression Heatmaps**: Clustered gene expression visualization
+- **Volcano Plots**: Differential expression results
+- **Manhattan Plots**: Genome-wide association studies
 
-### Development Tools
-- pytest >= 7.3.0
-- black >= 23.3.0
-- flake8 >= 6.0.0
+### Machine Learning
+- **Feature Selection**: Identify relevant genomic features
+- **Classification**: Sample categorization
+- **Clustering**: Unsupervised sample grouping
+
+## 🔍 Scientific Use Cases
+
+### Cancer Genomics
+- Identify driver mutations in tumor samples
+- Classify cancer subtypes based on expression profiles
+- Predict treatment response
+
+### Population Genetics
+- Analyze genetic diversity and population structure
+- Detect signatures of natural selection
+- Study evolutionary relationships
+
+### Personalized Medicine
+- Predict drug response based on genetic markers
+- Identify disease risk factors
+- Guide treatment decisions
+
+## 🎓 Learning Tasks
+
+### Task 1: Machine Learning Classification
+
+**Objective:** Build models to classify samples based on gene expression profiles.
+
+**Tasks:**
+- Split the dataset into training and testing sets.
+- Implement classification algorithms.
+- Evaluate model performance using metrics like accuracy, precision, recall, and ROC curves.
+
+**Learning Outcomes:**
+- Understand supervised learning techniques.
+- Learn model evaluation and validation strategies.
+
+## 📦 Dependencies
+
+Core dependencies include:
+- numpy >= 1.21.0
+- pandas >= 1.3.0
+- scikit-learn >= 0.24.0
+- biopython >= 1.79
+- matplotlib >= 3.4.0
+- seaborn >= 0.11.0
+- scipy >= 1.7.0
+
+For a complete list, see `requirements.txt`.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please ensure your code:
+- Follows PEP 8 style guidelines
+- Includes appropriate tests
+- Updates documentation as needed
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
+## 📧 Contact
 
-Julian P. Menon
-- GitHub: [@JulianPMenon](https://github.com/JulianPMenon)
+Julian P Menon - [@JulianPMenon](https://github.com/JulianPMenon)
+
+Project Link: [https://github.com/JulianPMenon/Genomic-Data-Science](https://github.com/JulianPMenon/Genomic-Data-Science)
 
 ## 🙏 Acknowledgments
 
-This template is designed for scientific research and educational purposes in genomic data science.
+- BioPython community
+- scikit-learn contributors
+- Open-source genomics tools and databases
 
-## 📖 Additional Resources
+---
 
-- [PyTorch Documentation](https://pytorch.org/docs/)
-- [Biopython Tutorial](http://biopython.org/DIST/docs/tutorial/Tutorial.html)
-- [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html)
-
-## 🐛 Issues and Support
-
-If you encounter any issues or have questions, please file an issue on the GitHub repository.
+**Note**: This is an educational project for learning genomic data science. For production use, please consult with domain experts and follow appropriate validation procedures.
