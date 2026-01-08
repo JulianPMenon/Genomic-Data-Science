@@ -50,7 +50,7 @@ According to Cao et al. (2022), a comprehensive benchmark study evaluated 13 pop
 
 ## Reference
 
-Cao, X., Xing, L., Majd, E., He, H., Gu, J., & Zhang, X. (2022). A Systematic Evaluation of Supervised Machine Learning Algorithms for Cell Phenotype Classification Using Single-Cell RNA Sequencing Data. *Frontiers in Genetics*, Volume 13. https://doi.org/10.3389/fgene.2022.836798
+Cao, X., Xing, L., Majd, E., He, H., Gu, J., & Zhang, X. (2022). A Systematic Evaluation of Supervised Machine Learning Algorithms for Cell Phenotype Classification Using Single-Cell RNA Sequencing Data. *Frontiers in Genetics*, *13*, 836798. https://doi.org/10.3389/fgene.2022.836798
 
 ## Tasks
 
