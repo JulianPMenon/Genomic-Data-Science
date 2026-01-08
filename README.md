@@ -175,10 +175,17 @@ Julian P Menon - [@JulianPMenon](https://github.com/JulianPMenon)
 Project Link: [https://github.com/JulianPMenon/Genomic-Data-Science](https://github.com/JulianPMenon/Genomic-Data-Science)
 
 ## 🙏 Acknowledgments
-- TODO
-- BioPython community
+- Biopython community
 - scikit-learn contributors
 - Open-source genomics tools and databases
+
+## 📚 References
+
+### Machine Learning Methods
+
+Cao, X., Xing, L., Majd, E., He, H., Gu, J., & Zhang, X. (2022). A Systematic Evaluation of Supervised Machine Learning Algorithms for Cell Phenotype Classification Using Single-Cell RNA Sequencing Data. *Frontiers in Genetics*, *13*, 836798. https://doi.org/10.3389/fgene.2022.836798
+
+> This comprehensive benchmark study evaluated 13 supervised machine learning algorithms for cell phenotype classification using scRNA-seq data. The research demonstrates that ElasticNet with interactions performs optimally for small and medium-sized datasets, providing valuable guidance for algorithm selection in genomic data analysis.
 
 ---
 
