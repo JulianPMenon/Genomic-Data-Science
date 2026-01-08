@@ -175,7 +175,7 @@ Julian P Menon - [@JulianPMenon](https://github.com/JulianPMenon)
 Project Link: [https://github.com/JulianPMenon/Genomic-Data-Science](https://github.com/JulianPMenon/Genomic-Data-Science)
 
 ## 🙏 Acknowledgments
-- BioPython community
+- Biopython community
 - scikit-learn contributors
 - Open-source genomics tools and databases
 
