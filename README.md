@@ -9,7 +9,6 @@ A comprehensive toolkit for genomic data analysis, visualization, and machine le
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Modules](#modules)
-- [Scientific Use Cases](#scientific-use-cases)
 - [Learning Tasks](#learning-tasks)
 - [Dependencies](#dependencies)
 - [Contributing](#contributing)
@@ -17,14 +16,14 @@ A comprehensive toolkit for genomic data analysis, visualization, and machine le
 
 ## 🔬 Overview
 
-This project provides a robust framework for analyzing genomic data, with a focus on:
+This project provides a framework for analyzing genomic data, with a focus on:
 - Gene expression analysis
 - Sequence processing and alignment
 - Statistical analysis and visualization
 - Machine learning applications in genomics
 - Integration with public genomic databases
 
-## ✨ Features
+## ✨ Features *TODO*
 
 - **Data Processing**: Tools for handling FASTA, FASTQ, VCF, and other genomic file formats
 - **Quality Control**: Comprehensive QC metrics and visualization
@@ -122,23 +121,6 @@ Genomic-Data-Science/
 - **Classification**: Sample categorization
 - **Clustering**: Unsupervised sample grouping
 
-## 🔍 Scientific Use Cases
-
-### Cancer Genomics
-- Identify driver mutations in tumor samples
-- Classify cancer subtypes based on expression profiles
-- Predict treatment response
-
-### Population Genetics
-- Analyze genetic diversity and population structure
-- Detect signatures of natural selection
-- Study evolutionary relationships
-
-### Personalized Medicine
-- Predict drug response based on genetic markers
-- Identify disease risk factors
-- Guide treatment decisions
-
 ## 🎓 Learning Tasks
 
 ### Task 1: Machine Learning Classification
@@ -193,7 +175,7 @@ Julian P Menon - [@JulianPMenon](https://github.com/JulianPMenon)
 Project Link: [https://github.com/JulianPMenon/Genomic-Data-Science](https://github.com/JulianPMenon/Genomic-Data-Science)
 
 ## 🙏 Acknowledgments
-
+- TODO
 - BioPython community
 - scikit-learn contributors
 - Open-source genomics tools and databases
