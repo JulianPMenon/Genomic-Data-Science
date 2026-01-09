@@ -68,10 +68,7 @@ venv.bak/
 *~
 
 # ML specific
-data/raw/*
-!data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
+data/
 models/checkpoints/*
 !models/checkpoints/.gitkeep
 logs/*
@@ -89,3 +86,6 @@ logs/*
 # Temporary files
 *.tmp
 *.log
+
+# Matplotlib cache
+fontlist.json
