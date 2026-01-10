@@ -2,24 +2,27 @@
 # Support Vector Machine implementation for genomic data classification
 
 import numpy as np
-from sklearn.svm import SVC
+from sklearn.svm import SVC, LinearSVC
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+from sklearn.decomposition import PCA, TruncatedSVD
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
-from typing import Optional, Tuple, Dict, Literal
+from typing import Optional, Tuple, Dict, Literal, Union
 import pickle
+from scipy import sparse
 
 '''
     ### SVM Model Class Wrapper SVC from sklearn ###
+    Supports both dense and sparse matrices for memory efficiency
 '''
 class SVMModel:
 
     def __init__(
                     self, 
-                    kernel: Literal['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'] = 'rbf', 
-                    C: float = 0.99,
+                    kernel: Literal['linear', 'poly', 'rbf', 'sigmoid', 'precomputed'] = 'linear', 
+                    C: float = 1.0,
                     gamma: Literal['scale', 'auto'] | float = 'scale', 
-                    pca_components: Optional[int] = None, 
+                    pca_components: Optional[int] = None,
+                    use_sparse: bool = True,
                     random_state: int = 42
                 ):
         
@@ -27,17 +30,33 @@ class SVMModel:
         self.C = C
         self.gamma = gamma
         self.pca_components = pca_components
+        self.use_sparse = use_sparse
         self.random_state = random_state
 
-        self.scaler = StandardScaler()
-        self.pca = PCA(n_components=pca_components) if pca_components else None
+        # Use sparse-compatible scaler
+        self.scaler = StandardScaler(with_mean=False) if use_sparse else StandardScaler()
+        
+        # Use TruncatedSVD (sparse PCA) or regular PCA
+        if pca_components:
+            self.pca = TruncatedSVD(n_components=pca_components, random_state=random_state) if use_sparse else PCA(n_components=pca_components, random_state=random_state)
+        else:
+            self.pca = None
 
-        self.model = SVC(
-            kernel=kernel,
-            C=C,
-            gamma=gamma,
-            random_state=random_state
-        )
+        # Use LinearSVC for linear kernel (more memory efficient)
+        if kernel == 'linear':
+            self.model = LinearSVC(
+                C=C,
+                max_iter=1000,
+                random_state=random_state,
+                dual=True  # Automatically choose based on n_samples vs n_features
+            )
+        else:
+            self.model = SVC(
+                kernel=kernel,
+                C=C,
+                gamma=gamma,
+                random_state=random_state
+            )
 
         self.is_fitted = False
 
