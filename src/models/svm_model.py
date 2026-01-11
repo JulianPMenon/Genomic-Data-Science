@@ -46,9 +46,12 @@ class SVMModel:
         if kernel == 'linear':
             self.model = LinearSVC(
                 C=C,
-                max_iter=1000,
+                max_iter=2000,           # Increase iterations for convergence
+                tol=1e-4,                # Slightly less strict (faster)
                 random_state=random_state,
-                dual=True  # Automatically choose based on n_samples vs n_features
+                dual=False,              # Primal is faster when n_samples > n_features
+                loss='squared_hinge',    # Faster than default hinge
+                verbose=0
             )
         else:
             self.model = SVC(
