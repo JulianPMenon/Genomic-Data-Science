@@ -270,7 +270,7 @@ class LinearSVMClassifier:
         with open(filepath, 'wb') as f:
             pickle.dump(self, f)
         
-        print(f"✓ Model saved to {filepath}")
+        print(f"Model saved to {filepath}")
     
     @staticmethod
     def load(filepath: str) -> 'LinearSVMClassifier':
@@ -326,7 +326,7 @@ class LinearSVMClassifier:
         """
         Set parameters for this estimator (sklearn compatibility).
         This was used for hyperparameter tuning with sklearn tools.
-        
+
         Parameters
         ----------
         **params : dict
