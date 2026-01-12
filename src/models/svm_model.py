@@ -12,9 +12,10 @@ from typing import Optional, Dict, Union, Literal
 import pickle
 from scipy import sparse
 import warnings
+from sklearn.base import BaseEstimator, ClassifierMixin # for sklearn compatibility for beyesian optimization
 
 
-class LinearSVMClassifier:
+class LinearSVMClassifier( BaseEstimator, ClassifierMixin):
     """
     Linear SVM wrapper for scRNA-seq perturbation classification.
     
@@ -94,6 +95,11 @@ class LinearSVMClassifier:
             verbose=self.verbose
         )
     
+    def __sklearn_tags__(self):
+        # Return an empty dict or custom tags as needed for sklearn compatibility
+        return super().__sklearn_tags__() or {}
+
+
     def fit(self, X: Union[np.ndarray, sparse.spmatrix], y: np.ndarray) -> 'LinearSVMClassifier':
         """
         Fit the Linear SVM model.
