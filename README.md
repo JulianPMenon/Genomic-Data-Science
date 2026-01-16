@@ -9,7 +9,7 @@ Install all required libraries:
 
 
 ```
-pip install pertdata skopt scikit-learn numpy pandas matplotlib jupyter notebook
+pip install pertdata scikit-optimize scikit-learn numpy pandas matplotlib jupyter notebook
 ```
 Or use the provided `requirements.txt` for a full environment setup.
 
