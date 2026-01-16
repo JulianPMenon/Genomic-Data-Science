@@ -15,6 +15,9 @@ Or use the provided `requirements.txt` for a full environment setup.
 
 Use a virtual environment like `venv` or `conda`.
 
+You can run the `notebooks/experiment.ipynb` for a short demo.
+Note: The hyperparameter search is optional and may run for dozens of hours.
+
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
@@ -26,7 +29,7 @@ For questions or collaboration, contact Julian Menon at julian.pmenon@proton.me.
 ## Notice
 
 GitHub Copilot with Claude Sonnet 4.5 and GPT-4.1 was used to coauthor comments and documentation in this project.
-```
+
 
 
 Project Link: [https://github.com/JulianPMenon/Genomic-Data-Science](https://github.com/JulianPMenon/Genomic-Data-Science)
