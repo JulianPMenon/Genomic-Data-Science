@@ -40,7 +40,7 @@ Project Link: [https://github.com/JulianPMenon/Genomic-Data-Science](https://git
 - Open-source genomics tools and databases
 - L3S
 - AI campus
-- Tutors and Kectors of the Genomic Data Science Class at LUH
+- Tutors and Lectors of the Genomic Data Science Class at LUH
 
 
 **Note**: This is an educational project for learning genomic data science. For production use, please consult with domain experts and follow appropriate validation procedures.
