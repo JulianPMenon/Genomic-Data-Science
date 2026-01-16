@@ -36,7 +36,7 @@ class LinearSVMClassifier( BaseEstimator, ClassifierMixin):
         
     class_weight : dict, 'balanced', or None, default=None
         Weights associated with classes. If 'balanced', automatically adjusts 
-        weights inversely proportional to class frequencies.
+        weights inversely proportional to class frequencies especialy for the norman Dataset.
         
     n_components : int or None, default=None
         Number of components for dimensionality reduction via TruncatedSVD.
@@ -73,7 +73,7 @@ class LinearSVMClassifier( BaseEstimator, ClassifierMixin):
         self.random_state = random_state
         self.verbose = verbose
         
-        # Initialize components (will be fitted during training)
+        # Initialize components
         self.model_ = None
         self.scaler_ = None
         self.svd_ = None
