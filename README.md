@@ -7,10 +7,6 @@ This project provides tools and code for genomic data analysis using machine lea
 
 Install all required libraries:
 
-```
-pip install pertdata scikit-optimize scikit-learn numpy pandas matplotlib
-```
-Install all required libraries (including Jupyter for running notebooks):
 
 ```
 pip install pertdata skopt scikit-learn numpy pandas matplotlib jupyter notebook
