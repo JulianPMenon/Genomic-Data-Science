@@ -2,6 +2,6 @@
 Models module - Contains neural network architectures
 """
 
-from .base_model import BaseModel
+from .svm_model import LinearSVMClassifier
 
-__all__ = ["BaseModel"]
+__all__ = ["LinearSVMClassifier"]
